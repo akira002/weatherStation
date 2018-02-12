@@ -117,6 +117,26 @@ otto = [
         r,r,r,r,r,r,r,r
         ]
 
+def printLevelOnMatrix(perc):
+    if perc == 0 :
+        sense.set_pixels(zero)
+    if perc > 0 and perc <= 12.5:
+        sense.set_pixels(uno)
+    if perc > 12.5 and perc <= 25:
+        sense.set_pixels(due)
+    if perc > 25 and perc <= 37.5:
+        sense.set_pixels(tre)
+    if perc > 37.5 and perc <= 50:
+        sense.set_pixels(quattro)
+    if perc > 50 and perc <= 62.5:
+        sense.set_pixels(cinque)
+    if perc > 62.5 and perc <= 75:
+        sense.set_pixels(sei)
+    if perc > 75 and perc <= 87.5:
+        sense.set_pixels(sette)
+    if perc > 87.5 and perc <= 100:
+        sense.set_pixels(otto)
+
 
 #Definisci le funzioni pressione, temperatura e umidita'
 def pressure(event):
@@ -129,25 +149,7 @@ def pressure(event):
       print(Pmin)
       Pperc = Pmin/ampiezzaScala*100
       print(Pperc)
-      #piu elegante con uno switch, ma forse i ragazzi non lo conoscono
-      if Pperc == 0 :
-        sense.set_pixels(zero)
-      if Pperc > 0 and Pperc <= 12.5:
-        sense.set_pixels(uno)
-      if Pperc > 12.5 and Pperc <= 25:
-        sense.set_pixels(due)
-      if Pperc > 25 and Pperc <= 37.5:
-        sense.set_pixels(tre)
-      if Pperc > 37.5 and Pperc <= 50:
-        sense.set_pixels(quattro)
-      if Pperc > 50 and Pperc <= 62.5:
-        sense.set_pixels(cinque)
-      if Pperc > 62.5 and Pperc <= 75:
-        sense.set_pixels(sei)
-      if Pperc > 75 and Pperc <= 87.5:
-        sense.set_pixels(sette)
-      if Pperc > 87.5 and Pperc <= 100:
-        sense.set_pixels(otto)
+      printLevelOnMatrix(Pperc)
 
 def temperature(event):
     if event.action != ACTION_RELEASED: #altrimenti viene eseguito anche quando il joystick e' rilasciato
@@ -159,26 +161,7 @@ def temperature(event):
       print(Tmin)
       Tperc = Tmin/ampiezzaScala*100
       print(Tperc)
-      #piu elegante con uno switch, ma forse i ragazzi non lo conoscono
-      if Tperc == 0 :
-        sense.set_pixels(zero)
-      if Tperc > 0 and Tperc <= 12.5:
-        sense.set_pixels(uno)
-      if Tperc > 12.5 and Tperc <= 25:
-        sense.set_pixels(due)
-      if Tperc > 25 and Tperc <= 37.5:
-        sense.set_pixels(tre)
-      if Tperc > 37.5 and Tperc <= 50:
-        sense.set_pixels(quattro)
-      if Tperc > 50 and Tperc <= 62.5:
-        sense.set_pixels(cinque)
-      if Tperc > 62.5 and Tperc <= 75:
-        sense.set_pixels(sei)
-      if Tperc > 75 and Tperc <= 87.5:
-        sense.set_pixels(sette)
-      if Tperc > 87.5 and Tperc <= 100:
-        sense.set_pixels(otto)
-
+      printLevelOnMatrix(Tperc)
 
 def humidity(event):
     if event.action != ACTION_RELEASED: #altrimenti viene eseguito anche quando il joystick e' rilasciato
@@ -188,28 +171,10 @@ def humidity(event):
         ampiezzaScala = maxhumid - minhumid
         Hmin = h - minhumid #dovrebbe sempre essere positivo
         print(Hmin)
+        #superfluo perchél'umidita e' gia' in percentuale
         Hperc = Hmin/ampiezzaScala*100
         print(Hperc)
-        #piu elegante con uno switch, ma forse i ragazzi non lo conoscono
-        if Hperc == 0 :
-            sense.set_pixels(zero)
-        if Hperc > 0 and Hperc <= 12.5:
-            sense.set_pixels(uno)
-        if Hperc > 12.5 and Hperc <= 25:
-            sense.set_pixels(due)
-        if Hperc > 25 and Hperc <= 37.5:
-            sense.set_pixels(tre)
-        if Hperc > 37.5 and Hperc <= 50:
-            sense.set_pixels(quattro)
-        if Hperc > 50 and Hperc <= 62.5:
-            sense.set_pixels(cinque)
-        if Hperc > 62.5 and Hperc <= 75:
-            sense.set_pixels(sei)
-        if Hperc > 75 and Hperc <= 87.5:
-            sense.set_pixels(sette)
-        if Hperc > 87.5 and Hperc <= 100:
-            sense.set_pixels(otto)
-
+        printLevelOnMatrix(Hperc)
 
 while True:
    sense.stick.direction_up = pressure
