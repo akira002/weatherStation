@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 import sys
+import time
+
 import Adafruit_DHT
 import Adafruit_BMP.BMP085 as BMP085
 
@@ -17,4 +19,4 @@ else:
 if temperatura1 > 25:
 	print("è caldo")
 else:
-	print("è freddo")
+	print("è freddo") 

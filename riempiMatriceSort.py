@@ -22,7 +22,7 @@ def insertion_sort(items):
 
 # Creates a list containing 5 lists, each of 8 items, all set to 0
 #w, h = 4, 60
-#timeseries = [[0 for x in range(w)] for y in range(h)]
+#timeseries = [[0 for x in range(w)] for y in range(h)] 
 
 #for i in range (0, 60):
 #    print(i)
@@ -46,3 +46,5 @@ umidita = arrayTimeseries[:,2].tolist()
 print(umidita)
 print(bubble_sort(temperature))
 print(insertion_sort(umidita))
+
+

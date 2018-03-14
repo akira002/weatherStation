@@ -1,6 +1,6 @@
 class Termometro:
-  __path = '/Users/alessandro/Desktop/Tesi/code/w1_slave'
-  #__path = '/sys/bus/w1/devices/28-03742e126461/w1_slave'
+  #__path = '/Users/alessandro/Desktop/Tesi/code/w1_slave'
+  __path = '/sys/bus/w1/devices/28-03742e126461/w1_slave'
   maxtemp = 0.0
   mintemp = 100.0
 
