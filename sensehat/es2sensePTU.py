@@ -1,4 +1,5 @@
 from sense_hat import SenseHat
+import os
 sense = SenseHat()
 
 # Definisco i colori rosso e verde
@@ -7,22 +8,29 @@ green = (0, 255, 0)
 
 while True:
 
-      # Take readings from all three sensors
+      # Effettuo la lettura delle grandezze da tutti e tre i sensori
     t = sense.get_temperature()
     p = sense.get_pressure()
     h = sense.get_humidity()
-     # Round the values to one decimal place
+    #Rilevo la temperatura del processore
+    tmp = os.popen('/opt/vc/bin/vcgencmd measure_temp')
+    cputemp = tmp.read()
+    cputemp = cputemp.replace('temp=','')
+    cputemp = cputemp.replace('\'C\n','')
+    cputemp = float(cputemp)
+    #correggo la temperatura rilevata
+    t = t - (cputemp - t)/1.5
+     # Arrotondo i valori alla prima cifra decimale
     t = round(t, 1)
     p = round(p, 1)
     h = round(h, 1)
-
-    # Create the message
-    # str() converts the value to a string so it can be concatenated
+    # Creo il messaggio
+    # str() converte i valori in stringhe in modo che possano essere concatenati
     message = "Temperature: " + str(t) + " Pressure: " + str(p) + " Humidity: " + str(h)
 
     if t > 18.3 and t < 26.7:
         bg = green
     else:
         bg = red
-    # Display the scrolling message
+    # Mostro il messaggio a scorrimento
     sense.show_message(message, scroll_speed=0.05, back_colour=bg)
