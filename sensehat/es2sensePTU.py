@@ -2,6 +2,17 @@ from sense_hat import SenseHat
 import os
 sense = SenseHat()
 
+def calibrateTemperature(temperatura):
+    #Rilevo la temperatura del processore
+    tmp = os.popen('/opt/vc/bin/vcgencmd measure_temp')
+    cputemp = tmp.read()
+    cputemp = cputemp.replace('temp=','')
+    cputemp = cputemp.replace('\'C\n','')
+    cputemp = float(cputemp)
+    #correggo la temperatura rilevata
+    temperatura = temperatura - (cputemp - temperatura)/1.5
+    return temperatura
+
 # Definisco i colori rosso e verde
 red = (255, 0, 0)
 green = (0, 255, 0)
@@ -12,14 +23,8 @@ while True:
     t = sense.get_temperature()
     p = sense.get_pressure()
     h = sense.get_humidity()
-    #Rilevo la temperatura del processore
-    tmp = os.popen('/opt/vc/bin/vcgencmd measure_temp')
-    cputemp = tmp.read()
-    cputemp = cputemp.replace('temp=','')
-    cputemp = cputemp.replace('\'C\n','')
-    cputemp = float(cputemp)
-    #correggo la temperatura rilevata
-    t = t - (cputemp - t)/1.5
+    #Effettuo la calibrazione della temperatura
+    t = calibrateTemperature(t)
      # Arrotondo i valori alla prima cifra decimale
     t = round(t, 1)
     p = round(p, 1)
