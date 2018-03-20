@@ -14,7 +14,7 @@ for i in range(0,60):
         temperatura1 = Adafruit_DHT.read_retry(22,22)[1]
         temperatura2 = sensor.read_temperature()
         temperatura3 = term.dammiTemperatura()
-        pressione = sensor.read_pressure()
+        pressione = sensor.read_pressure()/100
         umidterreno = umid.dammiUmidita()
-        print('Temperatura1 = {0:0.01f} C*, Temperatura2 = {1:0.01f} C*, Temperatura3 = {2:0.0001f} C*, Pressione = {3:0.01f} Pa, Umidita = {4:0.01f} %, Umidita Terreno = {5:0.01f}'.format(temperatura1, temperatura2, temperatura3, pressione, umidita, umidterreno))
+        print('Temperatura1 = {0:0.01f} C*, Temperatura2 = {1:0.01f} C*, Temperatura3 = {2:0.0001f} C*, Pressione = {3:0.01f} hPa, Umidita = {4:0.01f} %, Umidita Terreno = {5:0.01f} %'.format(temperatura1, temperatura2, temperatura3, pressione, umidita, umidterreno))
         time.sleep(1)
