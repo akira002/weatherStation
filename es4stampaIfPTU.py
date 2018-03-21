@@ -20,3 +20,7 @@ if temperatura1 > 25:
 	print("è caldo")
 else:
 	print("è freddo")
+if pressione > 1000:
+	print("c'è alta pressione")
+else:
+	print("c'è bassa pressione")
