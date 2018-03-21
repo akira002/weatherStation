@@ -3,8 +3,8 @@ import MySQLdb as mdb
 import datetime
 import Adafruit_DHT
 import Adafruit_BMP.BMP085 as BMP085
-from termometroDS import Termometro
-from umidterr import UmidometroTerreno
+from es3termometroDS import Termometro
+from es6umidterr import UmidometroTerreno
 
 sensor = BMP085.BMP085()
 term = Termometro()

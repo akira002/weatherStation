@@ -1,4 +1,4 @@
-from stampaLoopTmpPressione import returnDataAllSensors
+from es5stampaLoopPTU import returnDataAllSensors
 import time
 import numpy as np
 
@@ -34,5 +34,3 @@ umidita = arrayTimeseries[:,2].tolist()
 print(umidita)
 print(bubble_sort(temperature))
 print(insertion_sort(umidita))
-
-
