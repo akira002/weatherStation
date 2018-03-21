@@ -10,7 +10,6 @@ minpressure = 870
 maxhumid = 100
 minhumid = 0
 
-#otto livelli di riempimento della matrice
 r = (55, 0, 0)
 w = (55, 55, 55)
 
@@ -37,11 +36,6 @@ def matrixToList(matrice):
             lst.append(matrice[i][j])
     return lst
 
-def setMatrixLed(numeroBarre):
-    mat = generateMatrix(numeroBarre)
-    lst = matrixToList(mat)
-    sense.set_pixels(lst)
-
 def printLevelOnMatrix(perc):
     if perc == 0 :
         setMatrixLed(0)
@@ -58,7 +52,7 @@ def printLevelOnMatrix(perc):
     if perc > 62.5 and perc <= 75:
         setMatrixLed(6)
     if perc > 75 and perc <= 87.5:
-        setMatrixLed(7)    
+        setMatrixLed(7)
     if perc > 87.5 and perc <= 100:
         setMatrixLed(8)
 

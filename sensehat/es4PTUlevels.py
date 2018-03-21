@@ -1,7 +1,7 @@
 from sense_hat import SenseHat, ACTION_RELEASED
 sense = SenseHat()
 
-maxtemp = 55
+maxtemp = 45
 mintemp = -15
 #fonte wikipedia, minpressure livello del mare con tornado
 maxpressure = 1085

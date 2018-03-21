@@ -37,7 +37,7 @@ def generateMatrixP(numeroBarreP):
     return mat
 
 def generateMatrixT(numeroBarreT):
-     #faccio le barre vuote per la temperatura 
+     #faccio le barre vuote per la temperatura
     for i in range(0,8-numeroBarreT):
         for j in range(2,5):
             mat[i][j]=w
@@ -81,7 +81,7 @@ def percToOctave(perc):
     if perc > 62.5 and perc <= 75:
         return 6
     if perc > 75 and perc <= 87.5:
-        return 7    
+        return 7
     if perc > 87.5 and perc <= 100:
         return 8
 
@@ -114,7 +114,7 @@ def temperature(event):
       Toctave = percToOctave(Tperc)
       mat = generateMatrixT(Toctave)
       lst = matrixToList(mat)
-      sense.set_pixels(lst)  
+      sense.set_pixels(lst)
 
 def humidity(event):
     if event.action != ACTION_RELEASED: #altrimenti viene eseguito anche quando il joystick e' rilasciato
