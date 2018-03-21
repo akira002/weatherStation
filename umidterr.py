@@ -18,7 +18,7 @@ class UmidometroTerreno:
 #errore tipico: dimenticarsi di usare self (python non da errore, perche lo prende per inizializzazione variabile)
   def dammiUmidita(self):
         read_serial=self.ser.readline()
-        msg = read_serial.decode('utf-8')
+        msg = read_serial.decode('ascii')
         msg = msg[0:len(msg)-1]
         umid = int(msg)
         percumid = (1024-umid)/1024*100
