@@ -1,13 +1,6 @@
 import os
-import glob
-import sys
-import re
-import time
-import subprocess
-import MySQLdb as mdb 
+import MySQLdb as mdb
 import datetime
-import sys
-import time
 import Adafruit_DHT
 import Adafruit_BMP.BMP085 as BMP085
 from termometroDS import Termometro
@@ -16,39 +9,24 @@ from umidterr import UmidometroTerreno
 sensor = BMP085.BMP085()
 term = Termometro()
 umid = UmidometroTerreno()
- 
 
-databaseUsername="username" #YOUR MYSQL USERNAME, USUALLY ROOT
-databasePassword="password" #YOUR MYSQL PASSWORD 
-databaseName="WordpressDB" #do not change unless you named the Wordpress database with some other name
 
-#os.system('modprobe w1-gpio')
-#os.system('modprobe w1-therm')
- 
-#base_dir = '/sys/bus/w1/devices/'
-#device_folder = glob.glob(base_dir + '28*')[0]
-#device_file = device_folder + '/w1_slave'
+databaseUsername="username" #L'username di mysql, solitamente root
+databasePassword="password" #La password di mysql
+databaseName="WordpressDB" #Il nome del database
 
 def saveToDatabase(temperature, pressure, humidity, humidsoil):
-
         con=mdb.connect("localhost", databaseUsername, databasePassword, databaseName)
         currentDate=datetime.datetime.now().date()
-        #now=datetime.datetime.now()
-        #midnight=datetime.datetime.combine(now.date(),datetime.time())
-        #minutes=((now-midnight).seconds)/60 #minutes after midnight, use datead$
-        #hour=time.strftime("%H:%M:%S", time.gmtime())
         hour = datetime.datetime.now().time()
-        #print(datetime.datetime.now())
         with con:
             cur=con.cursor()
-
             cur.execute("INSERT INTO relevations (temperature, pressure, humidity, humidsoil,dateMeasured, hourMeasured) VALUES (%s,%s,%s,%s, %s, %s)",(temperature,pressure, humidity, humidsoil,currentDate, hour))
-
-            print("Saved relevations")
+            print("Rilevazioni salvate sul database")
             return "true"
 
 
-#check if table is created or if we need to create one
+#controlla se la tabella gia' esiste o se dobbiamo crearne una
 try:
         queryFile=open("wordpress/createTable.sql","r")
 
@@ -63,9 +41,9 @@ try:
                 line=queryFile.readline()
 
             cur=con.cursor()
-            cur.execute(query)	
+            cur.execute(query)
 
-            #now rename the file, because we do not need to recreate the table everytime this script is run
+            #Rinomina il file, perche' non abbiamo bisogno di ricreare la tabella ogni volta che lo script viene eseguito
             queryFile.close()
             os.rename("wordpress/createTable.sql","wordpress/createTable.sql.bkp")
 
@@ -79,5 +57,3 @@ temperature = term.dammiTemperatura()
 pressure = sensor.read_pressure()/100
 humidsoil = umid.dammiUmidita()
 saveToDatabase(temperature, pressure, humidity, humidsoil)
-
-
