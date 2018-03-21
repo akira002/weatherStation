@@ -50,7 +50,7 @@ def saveToDatabase(temperature, pressure, humidity, humidsoil):
 
 #check if table is created or if we need to create one
 try:
-        queryFile=open("createTable.sql","r")
+        queryFile=open("wordpress/createTable.sql","r")
 
         con=mdb.connect("localhost", databaseUsername,databasePassword,databaseName)
         currentDate=datetime.datetime.now().date()
@@ -67,7 +67,7 @@ try:
 
             #now rename the file, because we do not need to recreate the table everytime this script is run
             queryFile.close()
-            os.rename("createTable.sql","createTable.sql.bkp")
+            os.rename("wordpress/createTable.sql","wordpress/createTable.sql.bkp")
 
 
 except IOError:
