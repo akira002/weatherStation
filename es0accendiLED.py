@@ -8,7 +8,7 @@ GPIO.setmode(GPIO.BCM)
 #Disabilita i warnings
 GPIO.setwarnings(False)
 
-# Inserisci il numero della GPIO a cui il LED ècollegato
+# Inserisci il numero della GPIO a cui il LED è collegato
 LED = 18
 
 # Seleziona il pin di GPIO del LED come un output

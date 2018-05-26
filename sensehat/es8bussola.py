@@ -1,6 +1,7 @@
 from sense_hat import SenseHat
 import time
-
+#spiegare l'if
+#matrici con nomi anonimi, esercizio sull'if in cui devono testarle
 sense = SenseHat()
 def disegnaRetta(angolo):
     r = (255, 0, 0)
@@ -17,8 +18,7 @@ def disegnaRetta(angolo):
                 w,w,w,w,w,w,w,w
                 ]
         sense.set_pixels(output)
-    else:
-        if angolo < 90:
+    elif angolo < 90:
              output=[w,w,w,w,w,w,w,r,
                 w,w,w,w,w,w,r,w,
                 w,w,w,w,w,r,w,w,
@@ -29,80 +29,75 @@ def disegnaRetta(angolo):
                 b,w,w,w,w,w,w,w
                 ]
              sense.set_pixels(output)
-        else:
-            if angolo < 135:
-                output=[w,w,w,r,w,w,w,w,
-                    w,w,w,r,w,w,w,w,
-                    w,w,w,r,w,w,w,w,
-                    w,w,w,r,w,w,w,w,
-                    w,w,w,b,w,w,w,w,
-                    w,w,w,b,w,w,w,w,
-                    w,w,w,b,w,w,w,w,
-                    w,w,w,b,w,w,w,w
+    elif angolo < 135:
+            output=[w,w,w,r,w,w,w,w,
+                w,w,w,r,w,w,w,w,
+                w,w,w,r,w,w,w,w,
+                w,w,w,r,w,w,w,w,
+                w,w,w,b,w,w,w,w,
+                w,w,w,b,w,w,w,w,
+                w,w,w,b,w,w,w,w,
+                w,w,w,b,w,w,w,w
+                ]
+            sense.set_pixels(output)
+    elif angolo < 180:
+            output=[r,w,w,w,w,w,w,w,
+            w,r,w,w,w,w,w,w,
+            w,w,r,w,w,w,w,w,
+            w,w,w,r,w,w,w,w,
+            w,w,w,w,b,w,w,w,
+            w,w,w,w,w,b,w,w,
+            w,w,w,w,w,w,b,w,
+            w,w,w,w,w,w,w,b
+            ]
+            sense.set_pixels(output)
+    elif angolo < 225:
+            output=[w,w,w,w,w,w,w,w,
+                    w,w,w,w,w,w,w,w,
+                    w,w,w,w,w,w,w,w,
+                    r,r,r,r,b,b,b,b,
+                    w,w,w,w,w,w,w,w,
+                    w,w,w,w,w,w,w,w,
+                    w,w,w,w,w,w,w,w,
+                    w,w,w,w,w,w,w,w
                     ]
-                sense.set_pixels(output)
-            else:
-                if angolo < 180:
-                    output=[r,w,w,w,w,w,w,w,
-                    w,r,w,w,w,w,w,w,
-                    w,w,r,w,w,w,w,w,
-                    w,w,w,r,w,w,w,w,
-                    w,w,w,w,b,w,w,w,
-                    w,w,w,w,w,b,w,w,
-                    w,w,w,w,w,w,b,w,
-                    w,w,w,w,w,w,w,b
+            sense.set_pixels(output)
+    elif angolo < 270:
+            output=[w,w,w,w,w,w,w,b,
+            w,w,w,w,w,w,b,w,
+            w,w,w,w,w,b,w,w,
+            w,w,w,w,b,w,w,w,
+            w,w,w,r,w,w,w,w,
+            w,w,r,w,w,w,w,w,
+            w,r,w,w,w,w,w,w,
+            r,w,w,w,w,w,w,w
+            ]
+            sense.set_pixels(output)
+    elif angolo < 315:
+            output=[w,w,w,b,w,w,w,w,
+            w,w,w,b,w,w,w,w,
+            w,w,w,b,w,w,w,w,
+            w,w,w,b,w,w,w,w,
+            w,w,w,r,w,w,w,w,
+            w,w,w,r,w,w,w,w,
+            w,w,w,r,w,w,w,w,
+            w,w,w,r,w,w,w,w
+            ]
+            sense.set_pixels(output)
+    #TODO va bene anche un else?
+    elif angolo < 360:
+            output=[b,w,w,w,w,w,w,w,
+                    w,b,w,w,w,w,w,w,
+                    w,w,b,w,w,w,w,w,
+                    w,w,w,b,w,w,w,w,
+                    w,w,w,w,r,w,w,w,
+                    w,w,w,w,w,r,w,w,
+                    w,w,w,w,w,w,r,w,
+                    w,w,w,w,w,w,w,r
                     ]
-                    sense.set_pixels(output)
-                else:
-                    if angolo < 225:
-                        output=[w,w,w,w,w,w,w,w,
-                                w,w,w,w,w,w,w,w,
-                                w,w,w,w,w,w,w,w,
-                                r,r,r,r,b,b,b,b,
-                                w,w,w,w,w,w,w,w,
-                                w,w,w,w,w,w,w,w,
-                                w,w,w,w,w,w,w,w,
-                                w,w,w,w,w,w,w,w
-                                ]
-                        sense.set_pixels(output)
-                    else:
-                        if angolo < 270:
-                            output=[w,w,w,w,w,w,w,b,
-                            w,w,w,w,w,w,b,w,
-                            w,w,w,w,w,b,w,w,
-                            w,w,w,w,b,w,w,w,
-                            w,w,w,r,w,w,w,w,
-                            w,w,r,w,w,w,w,w,
-                            w,r,w,w,w,w,w,w,
-                            r,w,w,w,w,w,w,w
-                            ]
-                            sense.set_pixels(output)
-                        else:
-                            if angolo < 315:
-                                output=[w,w,w,b,w,w,w,w,
-                                w,w,w,b,w,w,w,w,
-                                w,w,w,b,w,w,w,w,
-                                w,w,w,b,w,w,w,w,
-                                w,w,w,r,w,w,w,w,
-                                w,w,w,r,w,w,w,w,
-                                w,w,w,r,w,w,w,w,
-                                w,w,w,r,w,w,w,w
-                                ]
-                                sense.set_pixels(output)
-                            else:
-                                if angolo < 360:
-                                    output=[b,w,w,w,w,w,w,w,
-                                            w,b,w,w,w,w,w,w,
-                                            w,w,b,w,w,w,w,w,
-                                            w,w,w,b,w,w,w,w,
-                                            w,w,w,w,r,w,w,w,
-                                            w,w,w,w,w,r,w,w,
-                                            w,w,w,w,w,w,r,w,
-                                            w,w,w,w,w,w,w,r
-                                            ]
-                                    sense.set_pixels(output)
+            sense.set_pixels(output)
 
-while (1):
+while True:
     compass = sense.get_compass()
     print ("Nord ", compass)
     disegnaRetta(compass)

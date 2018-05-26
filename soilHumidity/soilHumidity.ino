@@ -6,8 +6,7 @@ void setup()
 
 void loop()
 {
-  int s0 = analogRead(A0); //take a sample
+  int s0 = analogRead(A0);
   Serial.println(s0);
   delay(500);
 }
-

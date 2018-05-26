@@ -18,7 +18,7 @@ def Lampeggio(pin,numVolte,intervallo):
         GPIO.output(pin,False)
         #Attesa di intervallo secondi
         time.sleep(intervallo)
-    print("Fatto") 
+    print("Fatto")
     GPIO.cleanup()
 
 iterazioni = input("Inserisci il numero di lampeggi: ")
@@ -26,4 +26,3 @@ durata = input("Inserisci la durata in secondi di ogni lampeggio: ")
 pin = input("inserisci il numero del pin al quale hai collegato il led: ")
 
 Lampeggio(int(pin),int(iterazioni),float(durata))
-

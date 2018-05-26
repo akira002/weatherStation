@@ -24,6 +24,7 @@ timeseries = []
 for i in range(0, 10):
     row = returnDataAllSensors()
     timeseries.append(row)
+    time.sleep(1)
 
 arrayTimeseries = np.array(timeseries)
 #la temperatura e' la seconda colonna della matrice timeseries

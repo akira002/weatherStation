@@ -1,4 +1,3 @@
-#competenze acquisite: porta seriale, codifica UTF-8, operazioni su stringhe python
 import serial
 
 ser = serial.Serial('/dev/ttyACM0',9600)
