@@ -35,5 +35,5 @@ while(1):
             y = y+1
         if (roll < -0.4 and y > 0):
             y = y-1
-        time.sleep(1)
+        time.sleep(0.1)
     sense.show_message("Hai Vinto!")
